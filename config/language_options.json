@@ -1,0 +1,16 @@
+{
+    "from_language": {
+        "label": "From Language",
+        "options": {
+            "en": "English",
+            "ja": "Japanese"
+        }
+    },
+    "to_language": {
+        "label": "To Language",
+        "options": {
+            "en": "English",
+            "ja": "Japanese"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+[project]
+name = "hoshi-ai"
+version = "0.0.1"
+description = "AI Tool to translate Real-Time On-Screen Translation"
+authors = [
+    {name = "Lawrence Agnir"}
+]
+license = {text = "MIT License"}
+readme = "README.md"
+requires-python = "<3.14,>=3.9"
+dependencies = [
+    "pyside6 (>=6.10.0,<7.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
