@@ -1,8 +1,9 @@
-from PyQt6.QtWidgets import QWidget, QGridLayout, QBoxLayout, QPushButton, QSizePolicy
-from PyQt6.QtCore import Qt
+from PySide6.QtWidgets import QMainWindow, QWidget, QGridLayout, QBoxLayout, QPushButton, QSizePolicy
+from PySide6.QtCore import Qt
 from .util.contants import Contants
+from .widgets.translation_widget import TranslationWidget
 
-class MainWindow(QWidget):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self._window_configuration()
@@ -17,22 +18,19 @@ class MainWindow(QWidget):
         self.setGeometry(xScreen, yScreen, 582, 241)
 
     def _layout_components(self):
-        box = QBoxLayout(QBoxLayout.Direction.LeftToRight)
-        box.setContentsMargins(0, 0, 0, 0)
-        box.setSpacing(0)
-        self.setLayout(box)
+        #Set central widget
+        self.main_widget = QWidget()
+        self.main_widget.setContentsMargins(0, 0, 0, 0) #To remove default margins
+        self.setCentralWidget(self.main_widget)
 
+        #Main Grid Layout
         grid = QGridLayout()
-        grid.setContentsMargins(0, 0, 0, 0)
+        grid.setContentsMargins(0, 0, 0, 0) #To remove default margins
         grid.setSpacing(0)
+        
+        grid.addWidget(TranslationWidget(),0, 0)
+        grid.addWidget(QPushButton("Column 2"),0, 1)
+        
+        self.main_widget.setLayout(grid)
 
-        btn1 = QPushButton("WEW1")
-        btn2 = QPushButton("WEW2")
-
-        btn1.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        btn2.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-
-        grid.addWidget(btn1, 0, 0)
-        grid.addWidget(btn2, 0, 1)
-
-        box.addLayout(grid)
+        self.main_widget.show()
